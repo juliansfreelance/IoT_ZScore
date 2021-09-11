@@ -21,11 +21,12 @@ df.Height[ df.Height < lowerBound ] # Outlier Fuera del rango de limete innferio
 df.Height[ df.Height > upperBound ] # Outlier Fuera del rango de limite superior
 df.Height[ ( df.Height < lowerBound ) | ( df.Height > upperBound ) ] # Mostrar ambos Outlier
 
+# Datos limpios de Outlier
 df_no_outlier = df[ ( df.Height > lowerBound ) & ( df.Height < upperBound ) ]
 df_no_outlier.head() # Imprimir solo las primeras 5 lineas de la variable df_no_outlier
 df_no_outlier.count # Contar total de row
 
-# Z-core Z = (x-u)/o = (dato - media) / desviación estandar
+# Z-core Z = ( x - u ) / o = (dato - media) / desviación estandar
 df[ 'z-score' ] = ( df.Height - mean ) / std # Conocer a cuantas desviaciones estandar se encuentran alejados nuestros datos de la media
 df.head() # Imprimir solo las primeras 5 lineas de la variable df
 sn.histplot( df['z-score'], kde = True ) # Impresión de mis datos en forma de histograma
